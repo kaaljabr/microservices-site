@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  url: 'https://kaaljabr.github.io',
+  url: 'https://kaaljabr.github.io/',
   pathPrefix: '/microservices-site',
   title: 'Blog by John Doe',
   subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',

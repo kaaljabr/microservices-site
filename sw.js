@@ -26,26 +26,30 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-0a2a0c93725d2964c511.js"
+    "url": "webpack-runtime-49e8dfe245f42e27d736.js"
   },
   {
     "url": "styles.6e991d9f9546b3515b83.css"
   },
   {
-    "url": "styles-9c0271345bfd5b7ef785.js"
+    "url": "styles-93224f46c3d44d11633d.js"
   },
   {
-    "url": "commons-98316783db723d8c4ed0.js"
+    "url": "commons-f3ce0697919f1d0f1084.js"
   },
   {
-    "url": "app-a5714155a39a4a78298a.js"
+    "url": "app-b3e78d3ec37bca941661.js"
   },
   {
     "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-1a8fd7ba7f36bbb944d0.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "a4223604fb8c73f07ae321e3029e096a"
+    "revision": "572d31fc89775c2c1dc278b94b67f036"
+  },
+  {
+    "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
+    "revision": "2a83c6c986154b50c09a29028eb6fd9f"
   },
   {
     "url": "manifest.json",
@@ -72,12 +76,12 @@ const { NavigationRoute } = workbox.routing
 
 const navigationRoute = new NavigationRoute(async ({ event }) => {
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^`), ``)
+  pathname = pathname.replace(new RegExp(`^/microservices-site`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-a5714155a39a4a78298a.js`))) {
+  if (!resources || !(await caches.match(`/microservices-site/app-b3e78d3ec37bca941661.js`))) {
     return await fetch(event.request)
   }
 
@@ -90,7 +94,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/microservices-site/offline-plugin-app-shell-fallback/index.html`
   return await caches.match(offlineShell)
 })
 
